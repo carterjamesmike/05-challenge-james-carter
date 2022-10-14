@@ -8,12 +8,39 @@ var saveBtnEl7 = $('#btn-7');
 var saveBtnEl8 = $('#btn-8');
 var saveBtnEl9 = $('#btn-9');
 
+// var input1;
+// var input2;
+// var input3;
+// var input4;
+// var input5;
+// var input6;
+// var input7;
+// var input8;
+// var input9;
+
+var eventInput = document.querySelector("#event-text-1");   
+var arr = ["", "", "", "", "", "", "", "", "",];
 function test (num) {
     console.log(`The ${num} button worked!`);
 }
 
+function saveTest (id) {
+    var eventText = eventInput.value;
+    arr[id] = eventText;
+    storeTest(id);
+    console.log(`This is what is in the array ${arr[id]}`);
+    console.log(`This is the whole array so far ${arr}`);
+    
+}
+
+function storeTest (id) {
+    localStorage.setItem("arr", JSON.stringify(arr[id]));
+    console.log('The store funciton')
+}
+
 saveBtnEl1.on('click', function() {
     test(1);
+    saveTest(0);
     console.log(`First button click`);
 }) 
   
@@ -56,3 +83,8 @@ saveBtnEl9.on('click', function () {
     test(9);
     console.log('Ninth button click');
 })
+
+//Moment to do
+//if time < 9AM || > 5PM turn grey
+//else if time === current time turn red
+//else turn green
