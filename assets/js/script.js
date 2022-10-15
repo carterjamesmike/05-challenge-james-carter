@@ -11,37 +11,57 @@ var saveBtnEl9 = $('#btn-9');
 
 var arr = ["a", "b", "c", "d", "e", "f", "g", "h", "i",];
 
-function test (num) {
-    console.log(`The ${num} button worked!`);
+function init () {
+    var storedEvents = JSON.parse(localStorage.getItem("arr"));
+    if (storedEvents !== null) {
+        arr = storedEvents;
+        console.log(`This is the saved array on page load ${arr}`);
+        renderEvents();
+    }
 }
+
+// function test (num) {
+//     console.log(`The ${num} button worked!`);
+// }
 
 function saveTest (id) {
     var eventInput = document.querySelector(`#event-text-${id}`);  
     eventText = eventInput.value;
     arr[id] = eventText;
-    storeTest(id);
-    console.log(`This is what is in the array ${arr[id]}`);
-    console.log(`This is the whole array so far ${arr}`);   
-}
-
-function storeTest (id) {  
+    localStorage.setItem("arr", JSON.stringify(arr));    
+    // storeTest(id);
     
-    console.log('The store funciton');    
-    localStorage.setItem("arr", JSON.stringify(arr));
-
-
+    console.log(`This is what is in the array index ${arr[id]}`);
+    console.log(`This is the whole array so far ${arr}`);   
+    renderEvents();
 }
+
+function renderEvents () {
+    console.log(`Render Events function`);
+    // var inputText = document.querySelector(`#event-text-${}`);
+    // inputText.value = arr[];
+
+    for (i = 0; i < arr.length; i++) {
+        var inputText = document.querySelector(`#event-text-${i}`);
+        inputText.value = arr[i];
+    }
+}
+
+// function storeTest (id) {  
+//     console.log('The store funciton');    
+
+// }
 
 saveBtnEl1.on('click', function() {
     console.log(`First button click`);   
-    test(1);
+    // test(1);
     saveTest(0);
     id = 0;
 }) 
   
 saveBtnEl2.on('click', function () {
     console.log('Second button click');
-    test(2);
+    // test(2);
     saveTest(1);
     id = 1;  
 })
@@ -80,6 +100,8 @@ saveBtnEl9.on('click', function () {
     test(9);
     console.log('Ninth button click');
 })
+
+init ();
 
 //Moment to do
 //if time < 9AM || > 5PM turn grey
