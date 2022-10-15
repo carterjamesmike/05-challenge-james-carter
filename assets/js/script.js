@@ -9,6 +9,7 @@ var saveBtnEl8 = $('#btn-8');
 var saveBtnEl9 = $('#btn-9');
 
 
+
 var arr = ["a", "b", "c", "d", "e", "f", "g", "h", "i",];
 
 function init () {
@@ -57,6 +58,8 @@ saveBtnEl1.on('click', function() {
     // test(1);
     saveTest(0);
     id = 0;
+
+    // input.classList.add("future");
 }) 
   
 saveBtnEl2.on('click', function () {
@@ -103,7 +106,36 @@ saveBtnEl9.on('click', function () {
 
 init ();
 
-//Moment to do
-//if time < 9AM || > 5PM turn grey
-//else if time === current time turn red
-//else turn green
+
+var input = document.getElementById('9');
+
+checkTime();
+
+function checkTime () {
+    var currentTime = moment().format("H");
+    Number(currentTime);
+    console.log(typeof Number(currentTime));
+    console.log(currentTime);
+    console.log(typeof input.id);
+    console.log(input.id);
+
+
+    if (Number(input.id) < Number(currentTime) ) {
+        input.classList.add("past");
+        console.log(" Past Success!")
+    } 
+    else if (Number(input.id) > Number(checkTime) ){
+        input.classList.add("future")
+        console.log("Future success!")
+    } else {
+        input.classList.add("present");
+       console.log("Present success!")
+    }
+}
+
+//To Do
+//Change all input id's to numbers corresponding to their times such as in the first timeslot
+//Ensure new variable names match their fx that are called
+//Change variable names in all test fxs including checkTime fx
+//add checktime fx to init fx
+//update all remainging timeslots and buttons to match first two test timeslots and buttons
