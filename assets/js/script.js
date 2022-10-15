@@ -8,45 +8,42 @@ var saveBtnEl7 = $('#btn-7');
 var saveBtnEl8 = $('#btn-8');
 var saveBtnEl9 = $('#btn-9');
 
-// var input1;
-// var input2;
-// var input3;
-// var input4;
-// var input5;
-// var input6;
-// var input7;
-// var input8;
-// var input9;
 
-var eventInput = document.querySelector("#event-text-1");   
-var arr = ["", "", "", "", "", "", "", "", "",];
+var arr = ["a", "b", "c", "d", "e", "f", "g", "h", "i",];
+
 function test (num) {
     console.log(`The ${num} button worked!`);
 }
 
 function saveTest (id) {
-    var eventText = eventInput.value;
+    var eventInput = document.querySelector(`#event-text-${id}`);  
+    eventText = eventInput.value;
     arr[id] = eventText;
     storeTest(id);
     console.log(`This is what is in the array ${arr[id]}`);
-    console.log(`This is the whole array so far ${arr}`);
-    
+    console.log(`This is the whole array so far ${arr}`);   
 }
 
-function storeTest (id) {
-    localStorage.setItem("arr", JSON.stringify(arr[id]));
-    console.log('The store funciton')
+function storeTest (id) {  
+    
+    console.log('The store funciton');    
+    localStorage.setItem("arr", JSON.stringify(arr));
+
+
 }
 
 saveBtnEl1.on('click', function() {
+    console.log(`First button click`);   
     test(1);
     saveTest(0);
-    console.log(`First button click`);
+    id = 0;
 }) 
   
 saveBtnEl2.on('click', function () {
-    test(2);
     console.log('Second button click');
+    test(2);
+    saveTest(1);
+    id = 1;  
 })
 
 saveBtnEl3.on('click', function () {
