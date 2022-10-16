@@ -1,3 +1,4 @@
+var saveBtnEl0 = $('#btn-0');
 var saveBtnEl1 = $('#btn-1');
 var saveBtnEl2 = $('#btn-2');
 var saveBtnEl3 = $('#btn-3');
@@ -6,156 +7,79 @@ var saveBtnEl5 = $('#btn-5');
 var saveBtnEl6 = $('#btn-6');
 var saveBtnEl7 = $('#btn-7');
 var saveBtnEl8 = $('#btn-8');
-var saveBtnEl9 = $('#btn-9');
+var displayDate = moment().format('dddd MMM Do YY')
 
-
-
-var arr = ["a", "b", "c", "d", "e", "f", "g", "h", "i",];
+var arr = ["", "", "", "", "", "", "", "", "",];
 
 function init () {
+    document.getElementById('currentDay').innerHTML = displayDate;
     var storedEvents = JSON.parse(localStorage.getItem("arr"));
     if (storedEvents !== null) {
         arr = storedEvents;
-        console.log(`This is the saved array on page load ${arr}`);
         renderEvents();
     }
 }
 
-// function test (num) {
-//     console.log(`The ${num} button worked!`);
-// }
-
-function saveTest (id) {
+function saveInput (id) {
     var eventInput = document.querySelector(`#e${id+9}`);  
     eventText = eventInput.value;
     arr[id] = eventText;
-    localStorage.setItem("arr", JSON.stringify(arr));    
-    // storeTest(id);
-    
-    console.log(`This is what is in the array index ${arr[id]}`);
-    console.log(`This is the whole array so far ${arr}`);   
+    localStorage.setItem("arr", JSON.stringify(arr));     
     renderEvents();
 }
 
 function renderEvents () {
-    console.log(`Render Events function`);
-    // var inputText = document.querySelector(`#event-text-${}`);
-    // inputText.value = arr[];
-
     for (i = 0; i < arr.length; i++) {
         var inputText = document.querySelector(`#e${i+9}`);
         inputText.value = arr[i];
     }
 }
 
-// function storeTest (id) {  
-//     console.log('The store funciton');    
-
-// }
-
-saveBtnEl1.on('click', function() {
-    console.log(`First button click`);   
-    // test(1);
-    saveTest(0);
+saveBtnEl0.on('click', function() { 
+    saveInput(0);
     id = 0;
 
-    // input.classList.add("future");
 }) 
   
-saveBtnEl2.on('click', function () {
-    console.log('Second button click');
-    // test(2);
-    saveTest(1);
+saveBtnEl1.on('click', function () {
+    saveInput(1);
     id = 1;  
 })
 
+saveBtnEl2.on('click', function () {
+    saveInput(2);
+    id = 2;  
+})
+
 saveBtnEl3.on('click', function () {
-    test(3);
-    console.log('Third button click');
+    saveInput(3);
+    id = 3;  
 })
 
 saveBtnEl4.on('click', function () {
-    test(4);
-    console.log('Fourth button click');
+    saveInput(4);
+    id = 4;  
 })
 
 saveBtnEl5.on('click', function () {
-    test(5);
-    console.log('Fifth button click');
+    saveInput(5);
+    id = 5;  
 })
 
 saveBtnEl6.on('click', function () {
-    test(6);
-    console.log('Sixth button click');
+    saveInput(6);
+    id = 6;  
 })
 
 saveBtnEl7.on('click', function () {
-    test(7);
-    console.log('Seventh button click');
+    saveInput(7);
+    id = 7;  
 })
 
 saveBtnEl8.on('click', function () {
-    test(8);
-    console.log('Eighth button click');
+    saveInput(8);
+    id = 8;  
 })
-
-saveBtnEl9.on('click', function () {
-    test(9);
-    console.log('Ninth button click');
-})
-
-init ();
-
-
-// var input9 = document.getElementById('e9');
-// var input10 = document.getElementById('e10');
-// var input11 = document.getElementById('e11');
-// var input12 = document.getElementById('e12');
-// var input13 = document.getElementById('e13');
-// var input14 = document.getElementById('e14');
-// var input15 = document.getElementById('e15');
-// var input16 = document.getElementById('e16');
-// var input17 = document.getElementById('e17');
-
-// checkTime();
-
-// function checkTime () {
-//     var currentTime = moment().format("H");
-//     Number(currentTime);
-//     // console.log(typeof Number(currentTime));
-//     console.log(currentTime);
-//     // console.log(typeof input9.id);
-//     // console.log(input9.id);    
-//     // console.log(input9);
-//     input9 = input9.id;
-//     input9 = input9.substring(1);
-//     // console.log(input9)
-// //  console.log(typeof Number(subTest));
-
-// for (i = 0; i < arr.length; i++){
-//     var loopSelector = `input${i+9}`;
-//     loopSelector = loopSelector.substring(5);
-//     console.log(loopSelector);
-//     // console.log(typeof Number(loopSelector));
-
-//     if (Number(loopSelector) < Number(currentTime))  {
-//         // input9.style.backgroundColor = "#d3d3d3";
-//         // document.getElementById(`input${i+9}`).style.backgroundColor = "#d3d3d3";
-        
-//         console.log(" Past Success!")
-//     } else if (Number(loopSelector) > Number(currentTime)) {
-//         // input9.style.backgroundColor = "#ff6961";
-//         // document.getElementById(`input${i+9}`).style.backgroundColor = "#ff6961";
-//         console.log("Future success!")
-//     } else {
-//         // input9.style.backgroundColor = "#77dd77";
-//         // document.getElementById(`input${i+9}`).style.backgroundColor = "#77dd77";
-//        console.log("Present success!")
-//     }
-// }
-
-// }
-checkTime();
 
 function checkTime () {
     const timeBlocks = document.querySelectorAll(".form-control");
@@ -163,39 +87,22 @@ function checkTime () {
         blockId = timeBlocks[i].id
         blockId = blockId.substring(1);
         blockId = Number(blockId);
-        // console.log(typeof blockId)
-        // console.log(blockId);
         var momentTime = moment().format("H");
-        // console.log(momentTime);
         momentTime = Number(momentTime);
-        // console.log(typeof momentTime);
         if (blockId < momentTime) {
-            console.log("Past!");
-            var styleTest = document.getElementById(`e${i+9}`);
-            console.log(styleTest)
-            styleTest.classList.add("past");
+            var timeBlockEl = document.getElementById(`e${i+9}`);
+            timeBlockEl.classList.add("past");
         } else if (blockId > momentTime) {
-            console.log("Future");
-            var styleTest = document.getElementById(`e${i+9}`);
-            console.log(styleTest)
-            styleTest.classList.add("future");
+            var timeBlockEl = document.getElementById(`e${i+9}`);
+            timeBlockEl.classList.add("future");
         } else {
-            console.log("Present")
-            var styleTest = document.getElementById(`e${i+9}`);
-            console.log(styleTest)
-            styleTest.classList.add("present");
+            var timeBlockEl = document.getElementById(`e${i+9}`);
+            timeBlockEl.classList.add("present");
         }
     }
 
 }
 
+init ();
 
-//To Do
-//Fix bug in checkTime fx -->> currently wont' read the .add 
-
-
-//Change all input id's to numbers corresponding to their times such as in the first timeslot
-//Ensure new variable names match their fx that are called
-//Change variable names in all test fxs including checkTime fx
-//add checktime fx to init fx
-//update all remainging timeslots and buttons to match first two test timeslots and buttons
+checkTime();
