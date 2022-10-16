@@ -107,51 +107,87 @@ saveBtnEl9.on('click', function () {
 init ();
 
 
-var input9 = document.getElementById('e9');
-var input10 = document.getElementById('e10');
-var input11 = document.getElementById('e11');
-var input12 = document.getElementById('e12');
-var input13 = document.getElementById('e13');
-var input14 = document.getElementById('e14');
-var input15 = document.getElementById('e15');
-var input16 = document.getElementById('e16');
-var input17 = document.getElementById('e17');
+// var input9 = document.getElementById('e9');
+// var input10 = document.getElementById('e10');
+// var input11 = document.getElementById('e11');
+// var input12 = document.getElementById('e12');
+// var input13 = document.getElementById('e13');
+// var input14 = document.getElementById('e14');
+// var input15 = document.getElementById('e15');
+// var input16 = document.getElementById('e16');
+// var input17 = document.getElementById('e17');
 
+// checkTime();
+
+// function checkTime () {
+//     var currentTime = moment().format("H");
+//     Number(currentTime);
+//     // console.log(typeof Number(currentTime));
+//     console.log(currentTime);
+//     // console.log(typeof input9.id);
+//     // console.log(input9.id);    
+//     // console.log(input9);
+//     input9 = input9.id;
+//     input9 = input9.substring(1);
+//     // console.log(input9)
+// //  console.log(typeof Number(subTest));
+
+// for (i = 0; i < arr.length; i++){
+//     var loopSelector = `input${i+9}`;
+//     loopSelector = loopSelector.substring(5);
+//     console.log(loopSelector);
+//     // console.log(typeof Number(loopSelector));
+
+//     if (Number(loopSelector) < Number(currentTime))  {
+//         // input9.style.backgroundColor = "#d3d3d3";
+//         // document.getElementById(`input${i+9}`).style.backgroundColor = "#d3d3d3";
+        
+//         console.log(" Past Success!")
+//     } else if (Number(loopSelector) > Number(currentTime)) {
+//         // input9.style.backgroundColor = "#ff6961";
+//         // document.getElementById(`input${i+9}`).style.backgroundColor = "#ff6961";
+//         console.log("Future success!")
+//     } else {
+//         // input9.style.backgroundColor = "#77dd77";
+//         // document.getElementById(`input${i+9}`).style.backgroundColor = "#77dd77";
+//        console.log("Present success!")
+//     }
+// }
+
+// }
 checkTime();
 
 function checkTime () {
-    var currentTime = moment().format("H");
-    Number(currentTime);
-    console.log(typeof Number(currentTime));
-    console.log(currentTime);
-    console.log(typeof input9.id);
-    console.log(input9.id);    
-    console.log(input9);
-    input9 = input9.id;
-    input9 = input9.substring(1);
-    // console.log(input9)
-//  console.log(typeof Number(subTest));
-
-for (i = 0; i < arr.length; i++){
-    var loopSelector = `input${i+9}`;
-    loopSelector = loopSelector.substring(5);
-    // console.log(typeof loopSelector)
-
-    if (Number(loopSelector) < Number(currentTime))  {
-        // input9.classList.add("past");
-        console.log(" Past Success!")
-    } else if (Number(loopSelector) > Number(checkTime) ) {
-        // input9.classList.add("future");
-        console.log("Future success!")
-    } else {
-        // input9.classList.add("present");
-       console.log("Present success!")
+    const timeBlocks = document.querySelectorAll(".form-control");
+    for (var i = 0; i < timeBlocks.length; i++) {
+        blockId = timeBlocks[i].id
+        blockId = blockId.substring(1);
+        blockId = Number(blockId);
+        // console.log(typeof blockId)
+        // console.log(blockId);
+        var momentTime = moment().format("H");
+        // console.log(momentTime);
+        momentTime = Number(momentTime);
+        // console.log(typeof momentTime);
+        if (blockId < momentTime) {
+            console.log("Past!");
+            var styleTest = document.getElementById(`e${i+9}`);
+            console.log(styleTest)
+            styleTest.classList.add("past");
+        } else if (blockId > momentTime) {
+            console.log("Future");
+            var styleTest = document.getElementById(`e${i+9}`);
+            console.log(styleTest)
+            styleTest.classList.add("future");
+        } else {
+            console.log("Present")
+            var styleTest = document.getElementById(`e${i+9}`);
+            console.log(styleTest)
+            styleTest.classList.add("present");
+        }
     }
-}
 
 }
-
-
 
 
 //To Do
