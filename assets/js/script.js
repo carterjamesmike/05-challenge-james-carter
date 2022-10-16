@@ -26,7 +26,7 @@ function init () {
 // }
 
 function saveTest (id) {
-    var eventInput = document.querySelector(`#event-text-${id}`);  
+    var eventInput = document.querySelector(`#e${id+9}`);  
     eventText = eventInput.value;
     arr[id] = eventText;
     localStorage.setItem("arr", JSON.stringify(arr));    
@@ -43,7 +43,7 @@ function renderEvents () {
     // inputText.value = arr[];
 
     for (i = 0; i < arr.length; i++) {
-        var inputText = document.querySelector(`#event-text-${i}`);
+        var inputText = document.querySelector(`#e${i+9}`);
         inputText.value = arr[i];
     }
 }
@@ -107,7 +107,15 @@ saveBtnEl9.on('click', function () {
 init ();
 
 
-var input = document.getElementById('9');
+var input9 = document.getElementById('e9');
+var input10 = document.getElementById('e10');
+var input11 = document.getElementById('e11');
+var input12 = document.getElementById('e12');
+var input13 = document.getElementById('e13');
+var input14 = document.getElementById('e14');
+var input15 = document.getElementById('e15');
+var input16 = document.getElementById('e16');
+var input17 = document.getElementById('e17');
 
 checkTime();
 
@@ -116,24 +124,40 @@ function checkTime () {
     Number(currentTime);
     console.log(typeof Number(currentTime));
     console.log(currentTime);
-    console.log(typeof input.id);
-    console.log(input.id);
+    console.log(typeof input9.id);
+    console.log(input9.id);    
+    console.log(input9);
+    input9 = input9.id;
+    input9 = input9.substring(1);
+    // console.log(input9)
+//  console.log(typeof Number(subTest));
 
+for (i = 0; i < arr.length; i++){
+    var loopSelector = `input${i+9}`;
+    loopSelector = loopSelector.substring(5);
+    // console.log(typeof loopSelector)
 
-    if (Number(input.id) < Number(currentTime) ) {
-        input.classList.add("past");
+    if (Number(loopSelector) < Number(currentTime))  {
+        // input9.classList.add("past");
         console.log(" Past Success!")
-    } 
-    else if (Number(input.id) > Number(checkTime) ){
-        input.classList.add("future")
+    } else if (Number(loopSelector) > Number(checkTime) ) {
+        // input9.classList.add("future");
         console.log("Future success!")
     } else {
-        input.classList.add("present");
+        // input9.classList.add("present");
        console.log("Present success!")
     }
 }
 
+}
+
+
+
+
 //To Do
+//Fix bug in checkTime fx -->> currently wont' read the .add 
+
+
 //Change all input id's to numbers corresponding to their times such as in the first timeslot
 //Ensure new variable names match their fx that are called
 //Change variable names in all test fxs including checkTime fx
