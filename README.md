@@ -8,11 +8,11 @@ This is the fifth challange assignment for the UTA Full Stack Coding Bootcamp. T
 6. Saved input persists when paged is refreshed or reloaded. 
 
 ## Access
--The deployed page can be accessed via: 
+-The deployed page can be accessed via: https://carterjamesmike.github.io/05-challenge-james-carter/
 -The code can be accessed via: https://github.com/carterjamesmike/05-challenge-james-carter
 
 ## Screenshot of applicaiton
-![Screenshot of application](./assets/images/03-challenge-james-carter.jpg)
+![Screenshot of application](./assets/images/05-james-carter-challenge.jpg)
 
 ## Credits
 N/A
